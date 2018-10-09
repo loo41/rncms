@@ -1,0 +1,50 @@
+export const article = {
+  addTypeLabel: { api: '/addArticleTypeLabel', des: '添加文章类型和标签'},
+  articleTypeList: {api: '/articleTypeList', des: '文章类型标签列表'},
+  delectArticle: {api: '/delectArticle', des: '删除文章类型标签'},
+  addArticle: {api: '/addArticle', des: '添加文章与更新文章'},
+  articleList: {api: '/articleList', des: '文章列表'},
+  updateType: {api: '/updateType', des: '更新文章类型'},
+  updateShow: {api: '/updateShow', des: '更新发布状态'},
+  getArticleContent: {api: '/getArticleContent', des: '获取文章对应内容'},
+  delArticle: {api: '/delArticle', des: '获取文章对应内容'},
+  getJson: {api: '/article', des: '获取文章数据'},
+  getSearchJson: {api: '/searchArticle', des: '关键字文章查询'}
+}
+export const backup = {
+  backupsList: {api: '/backupsList', des: '备份列表'},
+  backups: {api: '/backups',des: '备份'},
+  delFile: {api: '/delectFile',des: '删除备份'}
+}
+
+export const user = {
+  addUser: {api: '/addUser', des: '添加管理员'},
+  userList: {api: '/userList', des: '管理员列表'},
+  delAdmin: {api: '/delectAdmin', des: '删除管理员'},
+  upAdmin: {api: '/updateUser', des: '更新管理员信息'}
+}
+
+export const power = {
+  powerList: {api: '/powerList', des: '权限列表'},
+  setPower: {api: '/setPower', des: '设置权限'}
+}
+
+export const index = {
+  login: {api: '/login', des: '登陆'},
+  checkPower: {api: '/checkPower', des: '检测权限'},
+  upload: {api: '/manage/upload', des: '文件上传'},
+  home: {api: '/homeData', des: '首页数据'}
+}
+
+export const log = {
+  log: {api: '/logList', des: '获取日志列表'},
+  delLog: {api: '/delLog', des: '删除日志'}
+}
+
+export const news = {
+  addNews: {api: '/addNews', des: '添加公告'},
+  getNewsList: {api: '/newsList', des: '公告列表'},
+  delNews: {api: '/delNews', des: '删除公告'}
+}
+
+export const addApi = Object.assign({}, article, backup, user, index, power, log, news)

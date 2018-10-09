@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>content</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .content-box {
+      width: 1000px;
+      margin: 0 auto;
+      border: 1px solid #E8E8E8;
+      padding: 10px;
+    }
+    @media only screen and (min-width: 319px) and (max-width: 992px) {
+      .content-box {
+        width: 100%;
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content-box">
+    {{@content.content}}
+  </div>
+</body>
+</html>
