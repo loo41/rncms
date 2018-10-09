@@ -19,7 +19,7 @@ npm run dev
 // 启动后端环境
 npm run dev:server
 
-// b打包编译
+// 打包编译
 npm run build
 
 // 服务器部署
