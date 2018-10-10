@@ -27,7 +27,6 @@ npm run server
 ```
 
 ### 预览
-
 [后台](http://rncms-admin.tianchenyong.top)
 
 ```txt
@@ -77,3 +76,10 @@ project
 |-------
 
 ```
+
+---
+
+### 开发
+
++ 更新在dev分支
++ 修复到一定时候合并到主分支
