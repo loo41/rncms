@@ -39,12 +39,12 @@ app
   .use(error())  // 错误统一处理
   .use(serve(path.join(__dirname, '/static')))
   .use(serve(path.join(__dirname, '/databak')))
-  .use(serve(path.join(__dirname, 'src/client')))
   .use(favicon(__dirname + '/static/favicon.ico'))
   .use(cors(app)) // 跨域
   .use(authentication()) // 权限检测
   .use(router.routes())
   .use(router.allowedMethods())
+  .use(serve(path.join(__dirname, 'src/client')))
 
 let port = process.env.PORT || 8080
 app.listen(port, () => {

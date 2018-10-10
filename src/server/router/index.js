@@ -54,6 +54,7 @@ router
 const {Client} = clientCon
 
 router
+    .get(``, Client.index)
     .get(`home`, Client.index)
     .get(`content`, Client.content)
 
