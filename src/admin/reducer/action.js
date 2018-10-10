@@ -12,3 +12,8 @@ export const _setLanguage = (state) => ({
   type: 'I18N',
   state
 })
+
+export const _setFrist = (state) => ({
+  type: 'GETINTO',
+  state
+})

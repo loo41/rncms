@@ -27,10 +27,19 @@ const i18n = (state = {currLocale: 'zh'}, action) => {
   }
 }
 
+const fristCome = (state = {fristGetInto: false}, action) => {
+  switch (action.type) {
+    case 'GETINTO':
+      return {fristGetInto: action.state}
+    default:
+      return state
+  }
+}
 
 
 export default combineReducers({
   auth,
   load,
-  i18n
+  i18n,
+  fristCome
 })

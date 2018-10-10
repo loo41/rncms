@@ -51,6 +51,9 @@ class Home extends Component {
     this.setState({routerKey: key})
   }
   _routerPath = (routerConfig, lastKey) => {
+    if (!Cookie.get('token')) {
+      this._logout()
+    }
     let flag = []
     routerConfig = routerConfig.menus
     let key = null

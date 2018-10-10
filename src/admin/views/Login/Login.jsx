@@ -3,8 +3,7 @@ import { Input, Button, Icon, message, notification } from 'antd'
 import {connect} from 'react-redux'
 import {injectIntl} from 'react-intl'
 import {bindActionCreators} from 'redux'
-import {_loading} from '@/reducer/action'
-import {_upLoginState} from '@/reducer/action'
+import {_loading, _setFrist, _upLoginState} from '@/reducer/action'
 import Cookies from 'js-cookie'
 import {login} from '@/api'
 import './Login.less'
@@ -14,17 +13,21 @@ class Login extends Component {
     super()
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      frist: false
     }
   }
   componentWillMount () {
     this._message()
   }
   _message = () => {
+    let {fristGetInto, setFristGetInto} = this.props
+    if (fristGetInto) return
     notification.open({
       message: 'rncms',
       description: '欢迎来到rncms',
     })
+    setFristGetInto(true)
   }
   _login = () => {
     const {history, upLoginState} = this.props
@@ -79,12 +82,15 @@ class Login extends Component {
 
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    fristGetInto : state.fristCome.fristGetInto
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
   upLoginState: bindActionCreators(_upLoginState, dispatch),
-  loading: bindActionCreators(_loading, dispatch)
+  loading: bindActionCreators(_loading, dispatch),
+  setFristGetInto: bindActionCreators(_setFrist, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Login))
