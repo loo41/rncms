@@ -66,7 +66,7 @@ class Login extends Component {
           <div className="login-input" onKeyPress={(e)=>{this._handleKeydown(e)}}>
             <Input placeholder={username} 
               prefix={<Icon type="user" />} onChange={this._getUsername}/>
-            <Input placeholder="密码" prefix={<Icon type="lock" />} onChange={this._getPassword} />
+            <Input placeholder="密码" type="password" prefix={<Icon type="lock" />} onChange={this._getPassword} />
           </div>
           <div className="login-but">
             <Button type="primary" block onClick={this._login}>登陆</Button>

@@ -9,10 +9,12 @@ exports.login = async(ctx) => {
     return
   }
   let token = await creatToken({_id: user[0]._id, username})
+  let ip = ctx.ip
+  if(ctx.headers['x-real-ip']) ip = ctx.headers['x-real-ip']
   let log = new Log({
     type: 2,
     des: '登陆信息',
-    logs: `${username}在${ctx.ip}处登陆`
+    logs: `${username}在${ip}处登陆`
   })
   await log.save()
   ctx.body = {code: 200, token}
