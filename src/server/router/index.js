@@ -54,9 +54,14 @@ router
 const {Client} = clientCon
 
 router
-    .get(``, Client.index)
     .get(`home`, Client.index)
     .get(`content`, Client.content)
+
+
+if (process.env.SERVER === 'true') {
+router
+    .get(``, Client.index)
+}
 
 
 module.exports = router
