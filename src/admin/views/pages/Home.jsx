@@ -39,9 +39,10 @@ class Home extends Component {
     clearTimeout(menuState)
   }
   _logout = () => {
-    const {history} = this.props
+    const {history, upLoginState} = this.props
     _upLoginState(false)
     Cookie.remove('token')
+    upLoginState(false)
     history.push('/login')
   }
   componentWillReceiveProps = async() => {

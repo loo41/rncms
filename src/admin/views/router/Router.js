@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Routes from './config'
+import Cookies from 'js-cookie'
 import ComponentList from '@/views/pages'
 import {
   Switch,
@@ -12,7 +13,7 @@ class RouterComponent extends Component {
     super()
   }
   requireLogin = (component, loginStatus) => {
-    if (!loginStatus) return <Redirect to={'/login'} />
+    if (!loginStatus || !Cookies.get('token')) return <Redirect to={'/login'} />
     return component
   }
   render() {
@@ -28,7 +29,7 @@ class RouterComponent extends Component {
                   key={r.key}
                   exact
                   path={r.path || ''}
-                  render={props => loginStatus? 
+                  render={props => (loginStatus && Cookies.get('token'))? 
                     <Components {...props} />
                     : this.requireLogin(<Components {...props}/>, loginStatus)}
                 />
