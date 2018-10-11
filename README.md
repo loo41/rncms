@@ -1,6 +1,8 @@
 ## rncms
-
 ---
+
+### [开发文档](https://github.com/loo41/rncms/tree/dev/doc)
+
 ### 技术栈
 
 ```
@@ -8,6 +10,7 @@ webpack4 + koa2 + reactjs + antd
 
 ```
 ### 使用
+
 ```
 git clone https://github.com/loo41/rncms.git
 
@@ -25,10 +28,6 @@ npm run build
 // 服务器部署
 npm run server
 ```
-
-### [开发文档](https://github.com/loo41/rncms/tree/dev/doc)
-
----
 
 ### 预览
 
