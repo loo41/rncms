@@ -1,7 +1,7 @@
 ## rncms
 ---
 
-### [开发文档](https://github.com/loo41/rncms/tree/dev/doc)
+### [开发文档](https://github.com/loo41/rncms/blob/dev/doc/README.md)
 
 ### 技术栈
 
