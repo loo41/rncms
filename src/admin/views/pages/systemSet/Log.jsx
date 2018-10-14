@@ -47,6 +47,16 @@ class Log extends Component {
       this._getLogList()
     })
   }
+  _getbutType (type) {
+    console.log(type)
+    if (type === 1) {
+      return 'danger'
+    } else if (type === 2) {
+      return 'primary'
+    } else if (type === 3) {
+      return 'dashed'
+    }
+  }
   render() {
     let {list, total, logViews, info} = this.state
     let columns = ([
@@ -54,12 +64,10 @@ class Log extends Component {
       {title: '时间', dataIndex: 'date', align: 'center', key: 'date'},
       {title: '操作', dataIndex: 'operation', align: 'center', key: 'operation', render: (text, record, index) => (
         <div>
-          {record.type == 1? <Button type="danger" onClick={() => {this._lookLogs({text, record, index})}}>
+          <Button type={this._getbutType(record.type)} onClick={() => {this._lookLogs({text, record, index})}}>
             <Icon type="eye" /> 查看
-          </Button>: <Button type="primary" onClick={() => {this._lookLogs({text, record, index})}}>
-            <Icon type="eye" /> 查看
-          </Button>}
-          <Button type="primary" type="danger" style={{marginLeft: '10px'}} onClick={() => {this._delectLogs(record._id)}}>
+          </Button>
+          <Button type="danger" style={{marginLeft: '10px'}} onClick={() => {this._delectLogs(record._id)}}>
             <Icon type="delete" /> 删除
           </Button>
         </div>

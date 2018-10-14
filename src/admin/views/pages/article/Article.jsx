@@ -49,9 +49,9 @@ class Article extends Component {
   _updateType = (type, _id, index) => {
     let flagType = type === 1? 2: 1
     let {loading} = this.props
-    loading(false)
+    loading(true)
     updateType({_id, articleType: flagType}).then((result) => {
-      loading(true)
+      loading(false)
       if (!result) return
       message.success('设置成功')
       let {list} = this.state

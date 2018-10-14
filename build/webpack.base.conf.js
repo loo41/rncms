@@ -38,6 +38,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'rnCms',
       template: path.resolve(CONST.BASEPATH, 'src/admin/public/index.html'),
+      favicon: path.join(__dirname, '..', 'src/admin/public/favicon.ico'),
       filename: 'index.html'
     })
   ]

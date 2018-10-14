@@ -17,9 +17,9 @@ module.exports = async () => {
   await mongo.save()
   console.log('备份成功')
   let err = new Log({
-    type: 2,
+    type: 3,
     des: '备份成功',
-    logs: '备份成功'
+    logs: '备份成功 ^_^'
   })
   await err.save()
 }

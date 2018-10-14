@@ -44,7 +44,7 @@ module.exports = merge(baseWebpackConfig, {
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
-      maxSize: 248000,
+      maxSize: 1000000,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
