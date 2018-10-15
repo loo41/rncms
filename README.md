@@ -30,7 +30,6 @@ npm run server
 ```
 
 ### 预览
-
 [后台](http://rncms-admin.tianchenyong.top)
 
 ```txt
@@ -83,11 +82,8 @@ project
 
 ---
 
-### 开发计划
+### 开发
 
-+ 添加用户增删查改功能
-+ 页面过渡
-
-### 修复问题
-
-+ / 路径前端后台同时占用问题(已修复)
++ 更新在dev分支
++ 修复到一定时候合并到主分支 (分支已经完善一些bug)
++ [开发文档](https://github.com/loo41/rncms/blob/dev/doc/README.md)
