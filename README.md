@@ -82,8 +82,6 @@ project
 
 ---
 
-### 开发
+### 开发计划
 
-+ 更新在dev分支
-+ 修复到一定时候合并到主分支 (分支已经完善一些bug)
-+ [开发文档](https://github.com/loo41/rncms/blob/dev/doc/README.md)
++ 添加用户栏
