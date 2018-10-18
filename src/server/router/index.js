@@ -11,7 +11,7 @@ const router = new Router({
  * @extends rncms
  */
 
-const { Admin, Backups, Article, Power, Log, News } = controller
+const { Admin, Backups, Article, Power, Log, News, User } = controller
 const { upload } = require('../utils/upload')
 
 router
@@ -44,8 +44,10 @@ router
     .get(`newsList`, News.newsList)
     .get(`delNews`, News.delNews)
     .get(`homeData`, Admin.homeData)
-
-
+    .del(`delect/:_id`, User.delect)
+    .get(`search`, User.search)
+    .get(`users/:page`, User.list)
+    .post(`user`, User.addUser)
   
 /**
  * 前端

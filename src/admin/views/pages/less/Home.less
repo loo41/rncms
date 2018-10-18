@@ -39,27 +39,70 @@
   background: white;
   border-top: 1px solid #D8DCE5;
   border-bottom: 1px solid #D8DCE5;
-  padding: 0 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
 }
 
 .router-path {
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  padding: 0 10px;
+  left: 30px;
+  right: 60px;
+}
+.path-router {
   height: 80%;
-  overflow: scroll-y
+  position: absolute;
+  white-space: nowrap;
+  transition: all .5s;
+  -moz-transition: all .5s; /* Firefox 4 */
+  -webkit-transition: all .5s; /* Safari 和 Chrome */
+  -o-transition: all .5s; /* Opera */
+  z-index: 1;
+}
+.router-left {
+  width: 30px;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #D8DCE5;
+  z-index: 2;
+  cursor: pointer;
+}
+.router-right {
+  width: 30px;
+  position: absolute;
+  right: 30px;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #D8DCE5;
+  z-index: 2;
+  cursor: pointer;
 }
 .close-all {
   display: flex;
   align-items: center;
-  justify-items: center;
-  padding: 0 10px;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  height: 80%;
+  justify-content: center;
+  width: 30px;
+  z-index: 2;
+  border-left: 1px solid #D8DCE5;
+  height: 99%;
   cursor: pointer;
+  background: white;
+  position: absolute;
+  right: 0;
+}
+.close-all i {
+  margin-left: 0px!important
 }
 .router a {
   text-decoration: none!important; 
@@ -73,8 +116,8 @@
   margin-right: 10px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  line-height: 30px;
 }
 .now-router {
   background: #001529;
@@ -83,4 +126,13 @@
 }
 .now-router a{
   color: white!important;
+}
+
+
+// 默认样式
+.ant-layout-sider-children {
+  height: auto!important;
+  min-height: 100%!important;
+  position: relative;
+  padding-bottom: 50px;
 }

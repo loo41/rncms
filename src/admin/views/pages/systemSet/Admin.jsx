@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { 
-  Table, Divider, Tag, 
-  Modal, Icon, Input, 
+  Table, Modal, Icon, Input, 
   Switch, Radio, Button,
   message
 } from 'antd'
@@ -11,7 +10,7 @@ import {_loading} from '@/reducer/action'
 import Power from '@/components/Power'
 import '../less/Admin'
 import {checkUser} from '../utils/AdminUtil'
-import {addUser, userList, delectAdmin, updateUser} from '@/api/user'
+import {addUser, userList, delectAdmin, updateUser} from '@/api/admin'
 const RadioGroup = Radio.Group
 
 class Admin extends Component {

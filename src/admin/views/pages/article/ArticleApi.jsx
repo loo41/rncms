@@ -186,7 +186,7 @@ class ArticleApi extends Component {
           </div>
         </div>
         <div className="api-search">
-          <div class="api-title">文章搜索API</div>
+          <div className="api-title">文章搜索API</div>
           <Divider />
             <div className="send-box">
               <div>{searchUrl}</div>

@@ -34,10 +34,6 @@ const ArticleSchema = new Schema({
   author: {type: Schema.Types.ObjectId, ref: 'admin'},
 })
 
-ArticleSchema.path('date').get(function (v) {
-  return moment(v).format("YYYY-MM-DD HH:mm:ss")
-})
-
 const Article = moogose.model('article', ArticleSchema)
 
 module.exports = Article

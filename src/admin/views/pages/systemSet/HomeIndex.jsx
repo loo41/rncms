@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {Icon, Divider} from 'antd'
+import {Icon, Divider, Avatar} from 'antd'
 import {homeData} from '@/api'
 import {getNewsList} from '@/api/news'
+import {userList} from '@/api/user'
 import Cookie from 'js-cookie'
 import '../less/HomeIndex'
 import userBg from '@/assets/img/user-bg.jpg'
@@ -19,6 +20,7 @@ class Index extends Component {
       adminPeople: 0,
       message: 0,
       news: 0,
+      colorList: ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'],
       messageContent: {},
       viewport: {
         width: 400,
@@ -26,13 +28,23 @@ class Index extends Component {
         latitude: 37.7577,
         longitude: -122.4376,
         zoom: 8
-      }
+      },
+      userList: []
     }
   }
   componentWillMount () {
     this._getHomeData()
     this._setHomeData()
     this._getNewsList()
+    this._getUserList()
+  }
+  _getUserList = () => {
+    userList({page: 1, limit: 4}).then((result) => {
+      if (!result) return
+      result = result.data
+      const {list} = result
+      this.setState({userList: list})
+    })
   }
   _getNewsList = () => {
     let {loading} = this.props
@@ -59,8 +71,9 @@ class Index extends Component {
     let username = await Cookie.get('username')
     this.setState({username})
   }
+  _getNewUser = async() => {}
   render() {
-    const {username, adminPeople, message, news, messageContent} = this.state
+    const {username, adminPeople, message, news, messageContent, userList, colorList} = this.state
     return (
       <div className="home-index-box">
         <div className="basic-data-box">
@@ -105,8 +118,8 @@ class Index extends Component {
             </div>
           </div>
           <div className="basic-other-data">
-            <div className="show-data">
-              <Map center={{lng: 117.124943, lat: 39.180983}} zoom="12" >
+            <div className="show-data" style={{padding: '10px', boxSizing: 'border-box', boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1)'}}>
+              <Map center={{lng: 117.124943, lat: 39.180983}} zoom="12" style={{height: '100%'}}>
                 <Marker position={{lng: 117.124943, lat: 39.180983}}/>
               </Map>
             </div>
@@ -129,7 +142,30 @@ class Index extends Component {
           </div>
           <div className="home-data">
             <div className="notice">
-              <p style={{letterSpacing: '1px', color: '#898FB1'}}>最近系统公告</p>
+              <p style={{letterSpacing: '1px', color: '#898FB1'}}>最新用户</p>
+              <Icon type="sync" onClick={this._getUserList}/>
+            </div>
+            <Divider />
+            <div>
+              {userList.map((item, i) => {
+                return <div key={i + item.username} className="user-list-box">
+                <div className="user-head">
+                  <div className="user-head-img">
+                    {item.head_thumb? 
+                      <img src={item.head_thumb} style={{width: '100%', height: '100%'}}/>: 
+                      <Avatar className="head-img" style={{backgroundColor: colorList[Math.floor(Math.random() * colorList.length)]}} >
+                        <Icon type="user" theme="outlined" style={{fontSize: '25px'}}/>
+                      </Avatar>}
+                  </div>
+                </div>
+                <div className="user-list-name">{item.username}</div>
+              </div>
+              })}
+            </div>
+          </div>
+          <div className="home-data" style={{marginLeft: '10px'}}>
+            <div className="notice">
+              <p style={{letterSpacing: '1px', color: '#898FB1'}}>系统公告</p>
               <Icon type="sync" onClick={this._getNewsList}/>
             </div>
             <Divider />

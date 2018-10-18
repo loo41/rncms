@@ -14,11 +14,11 @@ module.exports = {
       '/backupsList', '/articleList', 
       '/articleTypeList', '/powerList',
       '/homeData', '/logList', '/newsList',
-      '/getArticleContent', '/upload', '/manage/upload'],
+      '/getArticleContent', '/upload', '/manage/upload', '/users'],
     updateRouter: false,               /** 切记设置为true后保存重启完成后设置回flase  */
     alias: {},
     baseURL: 'http://127.0.0.1:' + (process.env.PORT || 8080), // http://127.0.0.1:' + (process.env.PORT || 8080)
-    github: 'https://github.com/loo41',
+    github: 'https://github.com/loo41/rncms',
     clientUrl: 'https://github.com/loo41'
   },
   server: {

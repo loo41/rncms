@@ -24,7 +24,7 @@ class SiderComponent extends Component {
     const {history} = this.props
     const {location} = history
     let defKey = await getKey(location.pathname)
-    await this.setState({defaultSelectedKeys: defKey})
+    await this.setState({defaultSelectedKeys: [defKey]})
   }
   _changeMode = () => {
     const {pattern} = this.state
@@ -42,14 +42,14 @@ class SiderComponent extends Component {
   }
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.routerKey) {
-      this.setState({defaultSelectedKeys: nextProps.routerKey})
+      this.setState({defaultSelectedKeys: [nextProps.routerKey]})
     }
   }
   render() {
     const {collapsed, routerKey} = this.props
     const {motive, pattern, defaultSelectedKeys} = this.state
     return(
-      <Sider collapsed={collapsed} theme={motive}>
+      <Sider collapsed={collapsed} theme={motive} style={{ overflow: 'auto'}}>
         <div className="logo">
           <a href="https://github.com/youngon-cn" target="_Blank">
             <img src={logoImg} style={{width: '100%'}}/>
@@ -61,7 +61,7 @@ class SiderComponent extends Component {
           mode={pattern}
           selectedKeys={routerKey || defaultSelectedKeys}
           onClick={this._changeKeys}
-          defaultSelectedKeys={defaultSelectedKeys}
+          defaultSelectedKeys
         />
         <div className="footer" style={collapsed? {display: 'none'} : {display: 'flex'}}>
           <Switch onChange={this._changeMode} style={{ marginRight: '5px' }}/> 模式

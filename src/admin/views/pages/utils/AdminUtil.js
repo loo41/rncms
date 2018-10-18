@@ -20,3 +20,20 @@ export const checkUser = (user, type) => {
   }
   return true
 }
+
+export const checkUserInfo = (user) => {
+  let regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+  let rePhone = /^1\d{10}$/
+  const {password, email, phone} = user
+  if (password !== '' && password.length < 6) {
+    message.warning('密码不能少于6位')
+    return false
+  } else if (!regMail.test(email)) {
+    message.warning('邮箱错误')
+    return false
+  } else if (!rePhone.test(phone)) {
+    message.warning('电话错误')
+    return false
+  }
+  return true
+}

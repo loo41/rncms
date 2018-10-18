@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Layout, Icon, Avatar, Dropdown, Menu, Spin, Select, message } from 'antd'
+import { Layout, Icon, Avatar, Dropdown, Menu, Spin, Select, message, Divider } from 'antd'
 import SiderComponent from '@/components/Sider'
 import {_upLoginState} from '@/reducer/action'
 import Routers from '@/views/router/Router'
@@ -25,7 +25,8 @@ class Home extends Component {
       routerArray: [],
       routerKey: null,
       nowI: [0],
-      locale: 'zh'
+      locale: 'zh',
+      scrollStyle: {}
     }
   }
   _closeMenu = () => {
@@ -81,7 +82,7 @@ class Home extends Component {
       routerArray.push({
         title: flag[flag.length - 1],
         path: lastKey,
-        routerKey: key
+        routerKey: [key]
       })
       nowI.splice(0, 1, routerArray.length - 1)
     } else {
@@ -91,10 +92,11 @@ class Home extends Component {
         }
       })
     }
+    this._setNar()
     return flag
   }
   _setKeys = (key) => {
-    this.setState({routerKey: key})
+    this.setState({routerKey: [key]})
   }
   _closeAll = () => {
     let {history} = this.props
@@ -140,8 +142,35 @@ class Home extends Component {
     // _setLanguage(value)
     // this.setState({locale: value})
   }
+  _setNar = () => {
+    if (this.refs.routerPathBox && this.refs.pathRouter) {
+      let flagOne = this.refs.routerPathBox.clientWidth
+      let flagTwo = this.refs.pathRouter.clientWidth
+      let nowRouter = document.querySelector('.now-router')
+      let flagThree = nowRouter.offsetLeft + nowRouter.clientWidth
+      if (flagThree - flagOne < 0) {
+        this.state.scrollStyle = {transform: 'translateX(0px)'}
+      } else if (flagTwo - flagOne > 0) {
+        this.state.scrollStyle = {transform: 'translateX(-' + (flagTwo - flagOne) + 'px)'}
+      }
+    }
+  }
+  _preRight = () => {
+    let flagOne = this.refs.routerPathBox.clientWidth
+    let flagTwo = this.refs.pathRouter.clientWidth
+    if (flagTwo - flagOne > 0) {
+      this.setState({
+        scrollStyle: {transform: 'translateX(-' + (flagTwo - flagOne) + 'px)'}
+      })
+    }
+  }
+  _preLeft = () => {
+    this.setState({
+      scrollStyle: {transform: 'translateX(0px)'}
+    })
+  }
   render() {
-    const {collapsed, visible, routerArray, routerKey, nowI, locale} = this.state
+    const {collapsed, visible, routerArray, routerKey, nowI, locale, scrollStyle} = this.state
     const {loginStatus, history, loadingState} = this.props
     let {pathname} = history.location
     const routerPath = this._routerPath(routerConfig, pathname)
@@ -200,20 +229,29 @@ class Home extends Component {
           </Header>
           <Content style={{flexDirection: 'column', minHeight: '100%', height: '100%'}}>
             <div className="router">
-              <div className="router-path">
-                {routerArray.map((item, i) => {
-                  return <div className={i === nowI[0]? 'router-path-box now-router': 'router-path-box'} key={i + 'router'}>
-                    <Link to={item.path}>
-                      <span>
-                        {item.title}
-                      </span>
-                    </Link>
-                    <Icon type='minus-circle' style={{marginLeft: '10px'}} onClick={() => {this._closeRouter(i)}} />
-                  </div>
-                })}
+              <div className="router-left" onClick={this._preLeft}>
+                <Icon type="caret-left" theme="outlined" />
+              </div>
+              <div className="router-path" ref="routerPathBox">
+                <div className="path-router" ref="pathRouter" style={scrollStyle}>
+                  <span>
+                    {routerArray.map((item, i) => {
+                      return <div className={i === nowI[0]? 'router-path-box now-router': 'router-path-box'} key={i + 'router'} >
+                        <Link to={item.path}>
+                          <span>
+                            {item.title}
+                          </span>
+                        </Link>
+                        <Icon type='minus-circle' style={{marginLeft: '10px'}} onClick={() => {this._closeRouter(i)}} />
+                      </div>
+                    })}
+                  </span>
+                </div>
+              </div>
+              <div className="router-right" onClick={this._preRight}>
+                <Icon type="caret-right" theme="outlined" />
               </div>
               <div className="close-all" onClick={this._closeAll}>
-                关闭所有
                 <Icon type="close-circle" theme="outlined" style={{marginLeft: '10px'}}/>
               </div>
             </div>

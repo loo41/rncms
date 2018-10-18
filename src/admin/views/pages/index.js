@@ -8,6 +8,10 @@ import Article from './article/Article'
 import AddArticle from './article/AddArticle'
 import ArticleType from './article/ArticleType'
 import ArticleApi from './article/ArticleApi'
+import UserManage from './user/UserManage'
+import UserMessage from './user/UserMessage'
+import UserApi from './user/UserApi'
+
 export default {
   Index,
   Log,
@@ -18,5 +22,8 @@ export default {
   Article,
   AddArticle,
   ArticleType,
-  ArticleApi
+  ArticleApi,
+  UserManage,
+  UserMessage,
+  UserApi
 }

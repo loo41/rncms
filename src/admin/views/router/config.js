@@ -10,6 +10,13 @@ export default {
         {path: '/home/set/news', key: 'news', title: '系统消息', component: 'News'}
       ]
     },
+    {key: 'home/user', title: '用户专栏', icon: 'user', 
+      childrens: [
+        {path: '/home/user/index', key: 'userManage', title: '用户管理', component: 'UserManage'},
+        {path: '/home/user/add', key: 'userMessage', title: '用户消息管理', component: 'UserMessage'},
+        {path: '/home/user/api', key: 'userApi', title: '用户API数据', component: 'UserApi'}
+      ]
+    },
     {key: 'home/article', title: '文章专栏', icon: 'ordered-list', 
       childrens: [
         {path: '/home/article/index', key: 'articleManage', title: '文章管理', component: 'Article'},

@@ -17,7 +17,7 @@ export const backup = {
   delFile: {api: '/delectFile',des: '删除备份'}
 }
 
-export const user = {
+export const admin = {
   addUser: {api: '/addUser', des: '添加管理员'},
   userList: {api: '/userList', des: '管理员列表'},
   delAdmin: {api: '/delectAdmin', des: '删除管理员'},
@@ -47,4 +47,11 @@ export const news = {
   delNews: {api: '/delNews', des: '删除公告'}
 }
 
-export const addApi = Object.assign({}, article, backup, user, index, power, log, news)
+export const user = {
+  delectUser: {api: '/delect', des: '删除用户'},
+  searchUser: {api: '/search', des: '查找用户'},
+  userList: {api: '/users', des: '用户列表'},
+  addUser: {api: '/user', des: '添加用户'},
+}
+
+export const addApi = Object.assign({}, article, backup, admin, user, index, power, log, news)

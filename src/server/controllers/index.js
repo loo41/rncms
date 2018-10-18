@@ -4,6 +4,7 @@ const Article = require('./article')
 const Power =  require('./power')
 const Log = require('./log')
 const News = require('./news')
+const User = require('./user')
 
 module.exports = {
   Admin,
@@ -11,5 +12,6 @@ module.exports = {
   Article,
   Power,
   Log,
-  News
+  News,
+  User
 }

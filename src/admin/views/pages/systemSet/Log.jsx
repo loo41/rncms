@@ -11,7 +11,7 @@ class Log extends Component {
     this.state = {
       list: [],
       page: 1,
-      total: [],
+      total: 0,
       logViews: false,
       info: ''
     }
@@ -48,7 +48,6 @@ class Log extends Component {
     })
   }
   _getbutType (type) {
-    console.log(type)
     if (type === 1) {
       return 'danger'
     } else if (type === 2) {
