@@ -136,3 +136,35 @@
   position: relative;
   padding-bottom: 50px;
 }
+
+.fade-appear, .fade-enter {
+  opacity: 0; 
+} 
+.fade-appear-active, .fade-enter-active { 
+  transition: opacity 0.3s linear; 
+  opacity: 1; 
+} 
+.fade-exit { 
+  transition: opacity 0.2s linear; 
+  opacity: 1; 
+} 
+.fade-exit-active { 
+  opacity: 0; 
+} 
+.spread-appear, .spread-enter { 
+  opacity: 0.5; 
+  transform: scale(0) rotate(30deg); 
+} 
+.spread-appear-active, 
+.spread-enter-active {
+   opacity: 1; 
+   transform: scale(1) rotate(0); 
+   transition: transform 0.3s ease-in-out; 
+} 
+.spread-exit { 
+  transition: transform 0.2s ease-in-out; 
+  transform: scale(1.2) rotate(-30deg); 
+} 
+.spread-exit-active { 
+  transform: scale(0) rotate(0); 
+}

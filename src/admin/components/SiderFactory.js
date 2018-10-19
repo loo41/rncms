@@ -13,6 +13,15 @@ const renderMenuItem = item => (
   </Menu.Item>
 )
 
+const _gotoUrl = itemurl => { 
+  const { history, location } = this.props; 
+  if (location.pathname === itemurl) { 
+    return
+  } else { 
+    history.push(itemurl);
+  } 
+}
+
 const renderSubMenu = item => ( 
   <Menu.SubMenu
     key={item.key}

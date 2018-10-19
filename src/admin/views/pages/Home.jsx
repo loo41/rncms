@@ -3,6 +3,7 @@ import { Layout, Icon, Avatar, Dropdown, Menu, Spin, Select, message, Divider } 
 import SiderComponent from '@/components/Sider'
 import {_upLoginState} from '@/reducer/action'
 import Routers from '@/views/router/Router'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import routerConfig from '../router/config'
 import screenfull from 'screenfull'
 import {connect} from 'react-redux'
@@ -169,6 +170,9 @@ class Home extends Component {
       scrollStyle: {transform: 'translateX(0px)'}
     })
   }
+  shouldComponentUpdate(nextProps) {
+    return nextProps.location !== this.props.location;
+  }
   render() {
     const {collapsed, visible, routerArray, routerKey, nowI, locale, scrollStyle} = this.state
     const {loginStatus, history, loadingState} = this.props
@@ -255,7 +259,17 @@ class Home extends Component {
                 <Icon type="close-circle" theme="outlined" style={{marginLeft: '10px'}}/>
               </div>
             </div>
-            <Routers loginStatus={loginStatus} {...this.props}/>
+            <TransitionGroup style={{height: '100%'}}>
+              <CSSTransition
+                key={pathname}
+                style={{height: '100%'}}
+                classNames={
+                  ['fade', 'spread'][parseInt(Math.random() * 2, 10)]
+                }
+                timeout={1000}>
+                  <Routers loginStatus={loginStatus} {...this.props}/>
+              </CSSTransition>
+            </TransitionGroup>
           </Content>
         </Layout>
       </Layout>
