@@ -13,7 +13,7 @@ function auth () {
     if (ctx.path.indexOf('/manage') === -1) return await next()
     let router = ctx.path = ctx.path.replace('/manage', '')
     if (router.indexOf('.') !== -1) return await next()
-    if (notCheck.indexOf(router) !== -1) return await next()
+    if (notCheck.indexOf(router) !== -1 || !notCheck.every((item) => router.indexOf(item) === -1 )) return await next()
     if (!ctx.headers.token) {return ctx.body = {code: 1100, mes: '无效Token'}}
     let user = await istoken(ctx)
     if (!user) {return ctx.body = {code: 1100, mes: '管理员不存在'} }
