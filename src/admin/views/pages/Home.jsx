@@ -27,7 +27,9 @@ class Home extends Component {
       routerKey: null,
       nowI: [0],
       locale: 'zh',
-      scrollStyle: {}
+      scrollStyle: {},
+      noRun: false,
+      routerPath: []
     }
   }
   _closeMenu = () => {
@@ -94,7 +96,7 @@ class Home extends Component {
       })
     }
     this._setNar()
-    return flag
+    this.setState({routerPath: flag, routerArray})
   }
   _setKeys = (key) => {
     this.setState({routerKey: [key]})
@@ -143,24 +145,47 @@ class Home extends Component {
     // _setLanguage(value)
     // this.setState({locale: value})
   }
-  _setNar = () => {
+  _setNar = async () => {
     if (this.refs.routerPathBox && this.refs.pathRouter) {
       let flagOne = this.refs.routerPathBox.clientWidth
-      let flagTwo = this.refs.pathRouter.clientWidth
-      let nowRouter = document.querySelector('.now-router')
-      let flagThree = nowRouter.offsetLeft + nowRouter.clientWidth
+      let flagTwo = this.refs.pathRouter.clientWidth + 30
+      let flagThree = await this._getNowRouterWith()
+      console.log(flagThree)
+      console.log(flagThree - flagOne)
       if (flagThree - flagOne < 0) {
-        this.state.scrollStyle = {transform: 'translateX(0px)'}
+        this._preLeft()
       } else if (flagTwo - flagOne > 0) {
-        this.state.scrollStyle = {transform: 'translateX(-' + (flagTwo - flagOne) + 'px)'}
+        this.setState({
+          scrollStyle: {transform: 'translateX(-' + (flagTwo - flagOne) + 'px)'}
+        })
       }
     }
   }
-  _preRight = () => {
+  _getNowRouterWith = async () => {
+    const {routerArray} = this.state
+    if (!this.refs.pathRouter) return
+    let flag = this.refs.pathRouter
+    let flagDiv = await flag.getElementsByTagName('div')
+    let {pathname} = this.props.history.location
+    let routerWidth = 0
+    let flagI = 0
+    routerArray.forEach((item, i) => {
+      if (item.path == pathname) {
+        flagI = i
+      }
+    })
+    for (let i = 0; i < flagI; i++) {
+      if (flagDiv[i]) {
+        routerWidth += flagDiv[i].clientWidth + 10
+      }
+    }
+    if (routerWidth || routerWidth === 0) return routerWidth
+  }
+  _preRight = async () => {
     let flagOne = this.refs.routerPathBox.clientWidth
-    let flagTwo = this.refs.pathRouter.clientWidth
+    let flagTwo = this.refs.pathRouter.clientWidth + 30
     if (flagTwo - flagOne > 0) {
-      this.setState({
+      await this.setState({
         scrollStyle: {transform: 'translateX(-' + (flagTwo - flagOne) + 'px)'}
       })
     }
@@ -170,14 +195,26 @@ class Home extends Component {
       scrollStyle: {transform: 'translateX(0px)'}
     })
   }
-  shouldComponentUpdate(nextProps) {
-    return nextProps.location !== this.props.location;
+  componentWillMount () {
+    this._render()
+    let animationName = Math.floor(Math.random() * 2)
+    this.setState({animationName: animationName === 1? 'fade': 'spread'})
+  }
+  _render = () => {
+    const {history} = this.props
+    let {pathname} = history.location
+    this._routerPath(routerConfig, pathname)
+  }
+  shouldComponentUpdate (nextProps) {
+    if (nextProps.location !== this.props.location) {
+      this._render()
+    }
+    return true
   }
   render() {
-    const {collapsed, visible, routerArray, routerKey, nowI, locale, scrollStyle} = this.state
-    const {loginStatus, history, loadingState} = this.props
+    const {collapsed, visible, routerArray, routerKey, nowI, locale, scrollStyle, routerPath, animationName} = this.state
+    const {loginStatus, loadingState, history} = this.props
     let {pathname} = history.location
-    const routerPath = this._routerPath(routerConfig, pathname)
     const menu = (
       <Menu 
         onMouseOver={this._openMenu}
@@ -238,7 +275,6 @@ class Home extends Component {
               </div>
               <div className="router-path" ref="routerPathBox">
                 <div className="path-router" ref="pathRouter" style={scrollStyle}>
-                  <span>
                     {routerArray.map((item, i) => {
                       return <div className={i === nowI[0]? 'router-path-box now-router': 'router-path-box'} key={i + 'router'} >
                         <Link to={item.path}>
@@ -249,7 +285,6 @@ class Home extends Component {
                         <Icon type='minus-circle' style={{marginLeft: '10px'}} onClick={() => {this._closeRouter(i)}} />
                       </div>
                     })}
-                  </span>
                 </div>
               </div>
               <div className="router-right" onClick={this._preRight}>
@@ -263,9 +298,7 @@ class Home extends Component {
               <CSSTransition
                 key={pathname}
                 style={{height: '100%'}}
-                classNames={
-                  ['fade', 'spread'][parseInt(Math.random() * 2, 10)]
-                }
+                classNames={animationName}
                 timeout={1000}>
                   <Routers loginStatus={loginStatus} {...this.props}/>
               </CSSTransition>

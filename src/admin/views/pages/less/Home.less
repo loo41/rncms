@@ -138,33 +138,52 @@
 }
 
 .fade-appear, .fade-enter {
-  opacity: 0; 
-} 
+  transform: translateX(100%);
+}
 .fade-appear-active, .fade-enter-active { 
-  transition: opacity 0.3s linear; 
-  opacity: 1; 
+  transition: all .5s linear; 
+  transform: translateX(0);
 } 
+.fade-enter-done{
+  transform: translateX(0);
+}
 .fade-exit { 
-  transition: opacity 0.2s linear; 
-  opacity: 1; 
+  transform: translateX(0);
 } 
 .fade-exit-active { 
-  opacity: 0; 
+  transition: all .3s linear;
+  transform: translateX(-100%);
 } 
+.fade-exit-done{
+  transform: translateX(-100%);
+}
+
+
+
 .spread-appear, .spread-enter { 
-  opacity: 0.5; 
-  transform: scale(0) rotate(30deg); 
+  transform: translateX(-100%);
+  opacity: 0;
 } 
 .spread-appear-active, 
 .spread-enter-active {
-   opacity: 1; 
-   transform: scale(1) rotate(0); 
-   transition: transform 0.3s ease-in-out; 
+  transition: all .5s linear; 
+  transform: translateX(0);
+  opacity: 1;
 } 
+.spread-enter-done{
+  transform: translateY(0);
+  opacity: 1;
+}
 .spread-exit { 
-  transition: transform 0.2s ease-in-out; 
-  transform: scale(1.2) rotate(-30deg); 
-} 
+  transform: translateX(0);
+  opacity: 1;
+}
 .spread-exit-active { 
-  transform: scale(0) rotate(0); 
+  transition: all .3s linear;
+  transform: translateX(100%);
+  opacity: 0;
+} 
+.spread-exit-done{
+  transform: translateX(100%);
+  opacity: 0;
 }
