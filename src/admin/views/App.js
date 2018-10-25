@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {_upLoginState} from '@/reducer/action'
-import Login from './Login/Login'
+import Loadable from "react-loadable"
 import Home from './pages/Home'
 import NotFound from './notfound/NotFound'
 import Cookies from 'js-cookie'
@@ -12,6 +12,9 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+
+const Loading = () =>  <div>loading...</div>
+const Login = Loadable({loader: () => import('./Login/Login'), loading: Loading})
 
 class App extends Component {
   componentWillMount () {

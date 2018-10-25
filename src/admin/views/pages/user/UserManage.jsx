@@ -42,7 +42,7 @@ export default class UserManage extends Component {
     searchUser({username: value}).then((result) => {
       if (!result) return
       result = result.data
-      let {userList} = this.state
+      let {userList} = result
       this.setState({searchList: userList, searchUserBox: true})
     })
   }

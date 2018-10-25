@@ -11,6 +11,8 @@ import {bindActionCreators} from 'redux'
 import {_loading} from '@/reducer/action'
 import {admin} from '@/config'
 import {Map, Marker} from 'react-bmap'
+import ComponentList from '@/views/pages'
+import Routes from '../../router/config'
 
 class Index extends Component {
   constructor () {
@@ -37,6 +39,16 @@ class Index extends Component {
     this._setHomeData()
     this._getNewsList()
     this._getUserList()
+  }
+  componentDidUpdate () {
+    Object.keys(Routes).forEach(key => 
+      Routes[key].forEach(item => {
+      const route = (r) => {
+        if (r.component === 'Index') return
+        ComponentList[r.component].preload()
+      }
+      item.component? route(item) : item.childrens.map(r => route(r))
+    }))
   }
   _getUserList = () => {
     userList({page: 1, limit: 4}).then((result) => {

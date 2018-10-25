@@ -59,6 +59,7 @@ class SiderComponent extends Component {
           menus={routerConfig.menus}
           theme={motive}
           mode={pattern}
+          {...this.props}
           selectedKeys={routerKey || defaultSelectedKeys}
           onClick={this._changeKeys}
           defaultSelectedKeys

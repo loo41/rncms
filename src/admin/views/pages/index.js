@@ -1,16 +1,20 @@
+import Loadable from "react-loadable"
+import Loading from './Loading'
+
 import Index from './systemSet/HomeIndex'
-import Log from './systemSet/Log'
-import Backups from './systemSet/Backups'
-import Admin from './systemSet/Admin'
-import News from './systemSet/News'
-import Power from './systemSet/Power'
-import Article from './article/Article'
-import AddArticle from './article/AddArticle'
-import ArticleType from './article/ArticleType'
-import ArticleApi from './article/ArticleApi'
-import UserManage from './user/UserManage'
-import UserMessage from './user/UserMessage'
-import UserApi from './user/UserApi'
+
+const Log = Loadable({loader: () => import('./systemSet/Log'), loading: Loading})
+const Backups = Loadable({loader: () => import('./systemSet/Backups'),loading: Loading})
+const Admin = Loadable({loader: () => import('./systemSet/Admin'),loading: Loading})
+const News = Loadable({loader: () => import('./systemSet/News'),loading: Loading})
+const Power = Loadable({loader: () => import('./systemSet/Power'),loading: Loading})
+const Article = Loadable({loader: () => import('./article/Article'),loading: Loading})
+const AddArticle = Loadable({loader: () => import('./article/AddArticle'),loading: Loading})
+const ArticleType = Loadable({loader: () => import('./article/ArticleType'),loading: Loading})
+const ArticleApi = Loadable({loader: () => import('./article/ArticleApi'),loading: Loading})
+const UserManage = Loadable({loader: () => import('./user/UserManage'),loading: Loading})
+const UserMessage = Loadable({loader: () => import('./user/UserMessage'),loading: Loading})
+const UserApi = Loadable({loader: () => import('./user/UserApi'),loading: Loading})
 
 export default {
   Index,

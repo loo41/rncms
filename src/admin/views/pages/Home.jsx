@@ -150,8 +150,6 @@ class Home extends Component {
       let flagOne = this.refs.routerPathBox.clientWidth
       let flagTwo = this.refs.pathRouter.clientWidth + 30
       let flagThree = await this._getNowRouterWith()
-      console.log(flagThree)
-      console.log(flagThree - flagOne)
       if (flagThree - flagOne < 0) {
         this._preLeft()
       } else if (flagTwo - flagOne > 0) {
@@ -299,7 +297,7 @@ class Home extends Component {
                 key={pathname}
                 style={{height: '100%'}}
                 classNames={animationName}
-                timeout={1000}>
+                timeout={500}>
                   <Routers loginStatus={loginStatus} {...this.props}/>
               </CSSTransition>
             </TransitionGroup>
