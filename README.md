@@ -30,6 +30,7 @@ npm run server
 ```
 
 ### 预览
+
 [后台](http://rncms-admin.tianchenyong.top)
 
 ```txt
@@ -39,7 +40,9 @@ npm run server
 
 [前台demo](http://rncms.tianchenyong.top/home)
 
-
+```
+前台基于模板渲染也可以用ajax，默认开发环境下允许跨域
+```
 
 [前端项目](http://vod.tianchenyong.top)
 
@@ -49,9 +52,6 @@ npm run server
 ```
 
 
-```
-前台基于模板渲染也可以用ajax，默认开发环境下允许跨域
-```
 
 ### 目录
 
