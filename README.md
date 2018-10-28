@@ -40,6 +40,15 @@ npm run server
 [前台demo](http://rncms.tianchenyong.top/home)
 
 
+
+[前端项目](http://vod.tianchenyong.top)
+
+```
+登陆后有更多操作权限
+但占时不支持
+```
+
+
 ```
 前台基于模板渲染也可以用ajax，默认开发环境下允许跨域
 ```
