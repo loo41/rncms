@@ -12,6 +12,9 @@ module.exports = merge(baseWebpackConfig, {
   entry: {
     app: `${path.resolve(CONST.BASEPATH, 'src/admin/main.js')}`
   },
+  performance: {
+    hints: false
+  },
   module: {
     rules: [
       {
@@ -28,14 +31,15 @@ module.exports = merge(baseWebpackConfig, {
       },
       {
         test: /\.(css)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       },
       {
         test: /\.(less)$/,
         use: [
           'style-loader',
           'css-loader',
-          'less-loader'
+          'less-loader',
+          'postcss-loader'
         ]
       }
     ]
@@ -44,7 +48,7 @@ module.exports = merge(baseWebpackConfig, {
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
-      maxSize: 1000000,
+      maxSize: 0,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,

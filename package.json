@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test",
     "dev": "cross-env NODE_ENV=development SERVER=false gulp run",
-    "build": "cross-env NODE_ENV=production gulp build",
+    "build": "cross-env NODE_ENV=production gulp build && webpack --progress --config ./build/webpack.prod.conf.js && gulp buildEnd",
     "dev:server": "cross-env SERVER=true nodemon ./app.js",
     "server": "cross-env NODE_ENV=production SERVER=true pm2 start pm2.config.js"
   },
@@ -71,6 +71,7 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.2",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
@@ -90,6 +91,7 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.3",
+    "postcss-loader": "^3.0.0",
     "react-hot-loader": "^4.3.11",
     "redux-thunk": "^2.3.0",
     "style-loader": "^0.23.0",

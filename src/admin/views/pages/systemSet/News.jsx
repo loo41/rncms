@@ -92,7 +92,7 @@ class News extends Component {
       )}
     ]
     return (
-      <div style={{padding: '20px'}}>
+      <div style={{padding: '20px', minHeight: '100%'}}>
         <Modal
           title="公告清除"
           visible={newsViews}

@@ -42,7 +42,7 @@ class Login extends Component {
       loading(false)
       if (!result) return
       result = result.data
-      Cookies.set('token', result.token)
+      Cookies.set('token', result.token, { expires: (1 / 12)})
       Cookies.set('username', username)
       upLoginState(true)
       history.push('/home/index')

@@ -12,7 +12,7 @@ gulp.task('server', function() {
           , tasks: [] })
   stream
     .on('restart', function () {
-      console.log('加载success!')
+      console.info('加载success!')
     })
     .on('crash', function() {
       console.error('应用退出!\n')
@@ -20,12 +20,8 @@ gulp.task('server', function() {
     })
 })
 
-gulp.task('compile', ['clear'], () => {
-  exec('webpack --config ./build/webpack.prod.conf.js', function (err, info) {
-    if (err) console.log(err)
-    console.log(info.green)
-  })
-})
+gulp.task('compile', ['clear'], function () {console.log('打包开始'.green)})
+gulp.task('buildEnd', function () {console.log('打包完成'.green)})
 
 gulp.task('clear', () => {
   del(['./dist'])

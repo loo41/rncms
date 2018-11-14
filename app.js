@@ -6,6 +6,7 @@ const koaBody = require('koa-body')
 const favicon = require('koa-favicon')
 const schedule = require('node-schedule')
 const render = require('koa-art-template')
+const {exec} = require("child_process")
 const app = new Koa()
 const router = require('./src/server/router')
 const CONST = require('./config/const')
@@ -48,9 +49,10 @@ app
 
 let port = process.env.PORT || 8080
 app.listen(port, () => {
+  const url = `http://127.0.0.1:${port}`
   if (process.env.SERVER === 'false') {
     console.log(`
-    admin started at http://127.0.0.1:${port}
+    admin started at ${url}
     webpack 构建中...
     `)
   }

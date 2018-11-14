@@ -27,6 +27,7 @@ module.exports = merge(baseWebpackConfig, {
         use: [
           'style-loader',
           'css-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -34,7 +35,8 @@ module.exports = merge(baseWebpackConfig, {
         use: [
           'style-loader',
           'css-loader',
-          'less-loader'
+          'less-loader',
+          'postcss-loader'
         ]
       }
     ]

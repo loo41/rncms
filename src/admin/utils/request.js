@@ -27,6 +27,12 @@ service.interceptors.response.use(
       if (res.code === 1100) {
         message.error(res.mes)
         return false
+      } else if (res.code === 105) {
+        message.error(res.mes)
+        if (Cookies.get('token')) {
+          Cookies.remove('token')
+        }
+        return
       }
       if(res.mes) message.warning(res.mes)
       return false
