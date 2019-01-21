@@ -1,5 +1,5 @@
 const {creatToken} = require('../utils/token')
-const {Admin, Log, News, Article} = require('../model')
+const {Admin, Log, News, Article, User, Mongo} = require('../model')
 
 exports.login = async(ctx) => {
   const {username, password} = ctx.request.body
@@ -81,4 +81,16 @@ exports.homeData = async(ctx) => {
   let message = await News.count()
   let news = await Article.count()
   ctx.body = {code: 200, admin, message, news}
+}
+
+exports.baseData = async(ctx) => {
+  let [admin, news, message, user, mongo, log] = await Promise.all([
+    Admin.count(),
+    Article.count(),
+    News.count(),
+    User.count(),
+    Mongo.count(),
+    Log.count()
+  ])
+  ctx.body = {code: 200, data: [admin, news, message, user, mongo, log]}
 }

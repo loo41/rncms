@@ -5,10 +5,16 @@
 
 ### 技术栈
 
-```
-webpack4 + koa2 + reactjs + antd
+- Webpack
+- Koa2
+- Reactjs
+- Antd
 
-```
+### 库
+
+- [背景](https://github.com/loo41/vuc)
+- [可视化](https://github.com/hustcc/echarts-for-react)
+
 ### 使用
 
 ```
@@ -31,34 +37,12 @@ npm run server
 
 ### 预览
 
-[后台](http://rncms-admin.tianchenyong.top)
-
-```txt
-    账号 youngon
-    密码 youngon
-```
-
-[前台demo](http://rncms.tianchenyong.top/home)
-
-```
-    前台基于模板渲染也可以用ajax，默认开发环境下允许跨域
-```
-
-[项目后台](http://vod-admin.tianchenyong.top)
-
-```txt
-    账号 youngon
-    密码 youngon
-```
-
-[项目地址](http://vod.tianchenyong.top)
-
-```
-    登陆后有更多操作权限
-    但占时不对非校内人员支持
-    望谅解
-```
-
+|   🔥     |  账号           | 预览   |
+| -------- | --------------- | ------ |
+| 后台地址 | youngon/youngon | [👀](http://rncms-admin.tianchenyong.top) |
+| 前端demo |                 | [👁️](http://rncms.tianchenyong.top/home) |
+| 项目后台 | youngon/youngon | [👀](http://vod-admin.tianchenyong.top)|
+| 项目地址 |                 | [👁](http://vod.tianchenyong.top )|
 
 
 ### 目录
@@ -101,4 +85,5 @@ project
 
 ### 开发计划
 
-+ 添加用户栏
++ 添加任务栏
++ 增加自动化部署

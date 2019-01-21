@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Icon, Divider, Avatar} from 'antd'
-import {homeData} from '@/api'
+import {homeData, baseData} from '@/api'
 import {getNewsList} from '@/api/news'
 import {userList} from '@/api/user'
 import Cookie from 'js-cookie'
@@ -10,7 +10,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {_loading} from '@/reducer/action'
 import {admin} from '@/config'
-import {Map, Marker} from 'react-bmap'
+import ReactEcharts from 'echarts-for-react'
 import ComponentList from '@/views/pages'
 import Routes from '../../router/config'
 
@@ -23,6 +23,7 @@ class Index extends Component {
       message: 0,
       news: 0,
       colorList: ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'],
+      option: {},
       messageContent: {},
       viewport: {
         width: 400,
@@ -39,6 +40,7 @@ class Index extends Component {
     this._setHomeData()
     this._getNewsList()
     this._getUserList()
+    this.getOption()
   }
   componentDidUpdate () {
     Object.keys(Routes).forEach(key => 
@@ -84,8 +86,69 @@ class Index extends Component {
     this.setState({username})
   }
   _getNewUser = async() => {}
+  getOption = () => {
+    baseData().then((result) => {
+      if (!result) return
+      result = result.data
+      const {data} = result
+      this.setState({option: {
+        title: {
+          text: '网站基本数据统计'
+        },
+        tooltip: {},
+        legend: {
+            data: ['数据']
+        },
+        xAxis: {
+            data: ["管理员", "文档", "消息", "用户", "数据", "日志"]
+        },
+        yAxis: {},
+        series: [{
+          name: '数据',
+          type: 'bar',
+          data: [{
+            value: data[0],
+            itemStyle: {
+              color: '#67C23A',
+              barBorderRadius: [3, 3, 0, 0]
+            }
+          }, {
+            value: data[1],
+            itemStyle: {
+              color: '#34BFA3',
+              barBorderRadius: [3, 3, 0, 0]
+            }
+          }, {
+            value: data[2],
+            itemStyle: {
+              color: '#36A3F7',
+              barBorderRadius: [3, 3, 0, 0]
+            }
+          }, {
+            value: data[3],
+            itemStyle: {
+              color: '#F4516C',
+              barBorderRadius: [3, 3, 0, 0]
+            }
+          }, {
+            value: data[4],
+            itemStyle: {
+              color: '#34BFA3',
+              barBorderRadius: [3, 3, 0, 0]
+            }
+          }, {
+            value: data[5],
+            itemStyle: {
+              color: '#67C23A',
+              barBorderRadius: [3, 3, 0, 0]
+            }
+          }]
+        }]
+      }})
+    })
+  }
   render() {
-    const {username, adminPeople, message, news, messageContent, userList, colorList} = this.state
+    const {username, adminPeople, message, news, messageContent, userList, colorList, option} = this.state
     return (
       <div className="home-index-box">
         <div className="basic-data-box">
@@ -131,9 +194,11 @@ class Index extends Component {
           </div>
           <div className="basic-other-data">
             <div className="show-data" style={{padding: '10px', boxSizing: 'border-box', boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1)'}}>
-              <Map center={{lng: 117.124943, lat: 39.180983}} zoom="12" style={{height: '100%'}}>
-                <Marker position={{lng: 117.124943, lat: 39.180983}}/>
-              </Map>
+              <ReactEcharts
+                option={option}
+                lazyUpdate={true}
+                style={{height: '110%'}}
+              />
             </div>
           </div>
         </div>

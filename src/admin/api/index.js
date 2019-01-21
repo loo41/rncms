@@ -24,3 +24,12 @@ export function homeData () {
   })
 }
 
+
+export function baseData () {
+  return request({
+    url: index.baseData.api,
+    method: 'get'
+  })
+}
+
+

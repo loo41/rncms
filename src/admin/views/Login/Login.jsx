@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {injectIntl} from 'react-intl'
 import {bindActionCreators} from 'redux'
 import {_loading, _setFrist, _upLoginState} from '@/reducer/action'
+import MaterialImage from './materialImage.es5'
 import Cookies from 'js-cookie'
 import {login} from '@/api'
 import './Login.less'
@@ -14,11 +15,26 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      frist: false
+      frist: false,
+      bg: {}
     }
   }
   componentWillMount () {
     this._message()
+  }
+  componentDidMount () {
+    this._setBg()
+  }
+  _setBg = () => {
+    const myDom = document.querySelector('.login-box')
+    const bg = new MaterialImage({
+      el: myDom,
+    })
+    this.setState({bg: bg})
+  }
+  _drowBg = () => {
+    const {bg} = this.state
+    bg.protract()
   }
   _message = () => {
     let {fristGetInto, setFristGetInto} = this.props
@@ -63,7 +79,7 @@ class Login extends Component {
     const {intl} = this.props
     let username = intl.formatMessage({id: 'intl.username'},{name: '账号'});
     return (
-      <div className="login-box">
+      <div className="login-box" onClick={this._drowBg}>
         <div className="login-form">
           <div className="login-logo"></div>
           <div className="login-input" onKeyPress={(e)=>{this._handleKeydown(e)}}>

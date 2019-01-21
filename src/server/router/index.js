@@ -48,6 +48,7 @@ router
     .get(`search`, User.search)
     .get(`users/:page`, User.list)
     .post(`user`, User.addUser)
+    .get(`baseData`, Admin.baseData)
   
 /**
  * 前端

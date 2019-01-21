@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Layout, Icon, Avatar, Dropdown, Menu, Spin, Select, message, Divider } from 'antd'
+import { Layout, Icon, Avatar, Dropdown, Menu, Spin, Select, message } from 'antd'
 import SiderComponent from '@/components/Sider'
 import {_upLoginState} from '@/reducer/action'
 import Routers from '@/views/router/Router'

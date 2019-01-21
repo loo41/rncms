@@ -33,7 +33,8 @@ export const index = {
   login: {api: '/login', des: '登陆'},
   checkPower: {api: '/checkPower', des: '检测权限'},
   upload: {api: '/manage/upload', des: '文件上传'},
-  home: {api: '/homeData', des: '首页数据'}
+  home: {api: '/homeData', des: '首页数据'},
+  baseData: {api: '/baseData', des: '基本数据'}
 }
 
 export const log = {

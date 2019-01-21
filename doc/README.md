@@ -66,7 +66,7 @@ project
 
 ```text
 
-服务根目录下npm run server 即可 建议更改8080端口，我服务器这样端口一直是被占用的
+服务根目录下npm run server 即可 建议更改8080端口 （在app.js文件下），我服务器这样端口一直是被占用的
 
 ```
 
@@ -90,13 +90,13 @@ server {
 
     location /manage {
         proxy_pass 你本地后端服务（http://127.0.0.1:3015）;
-        proxy_set_header Host $host:$sserver_port;
+        proxy_set_header Host $host:$server_port;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
     
     location ~* \.(gif|jpg|jpeg|png)$ {
-        root 你后端文件的静态目录下(/home/rncms/server/sattic);
+        root 你后端文件的静态目录下(/home/rncms/server/static);
         expires 30d;
     }
 
