@@ -162,7 +162,7 @@ class Index extends Component {
                 <p>{adminPeople}</p>
               </div>
             </div>
-            <div style={{marginLeft: '10px', marginBottom: '10px'}} className="list-box-two">
+            <div style={{marginLeft: '9px', marginBottom: '10px'}} className="list-box-two">
               <div className="list-two">
                 <Icon type="message" style={{fontSize: '40px', color: '#F4516C'}} className="list-two-icon"/>
               </div>
@@ -180,7 +180,7 @@ class Index extends Component {
                 <p>{news}</p>
               </div>
             </div>
-            <div style={{marginLeft: '10px', marginTop: '10px'}} className="list-box-four">
+            <div style={{marginLeft: '9px', marginTop: '10px'}} className="list-box-four">
               <div className="list-four">
                 <a href={admin.clientUrl} target="_Blank" >
                   <Icon type="chrome" style={{fontSize: '40px', color: '#34BFA3'}} className="list-four-icon"/>
