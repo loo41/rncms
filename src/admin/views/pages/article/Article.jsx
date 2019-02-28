@@ -128,7 +128,7 @@ class Article extends Component {
       {title: '发布', width: 150, dataIndex: 'show', key: 'show', render: (text, record, index) => (
         <Switch defaultChecked={text} value={text} onChange={(state) => {this._updateShow(state, record._id, index)}}/>
       )},
-      {title: '操作', align: 'center',  key: 'operation', render: (text, record, index) => (
+      {title: '操作', width: 200, align: 'center',  key: 'operation', render: (text, record, index) => (
         <div>
           <Button type="primary" onClick={() => {this._openUpdate(record)}}>
             <Icon type="form" />
