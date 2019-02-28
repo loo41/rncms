@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/app.css" />
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <title>rncms</title>
+</head>
+<body>
+  <div class="all-box">
+    <marquee class="gonggao">{{if news}}<%= news.content %>{{/if}}</marquee>
+    <header id="header">
+        <div class="carousel slide" data-ride="carousel">
+                <!-- 指示符 -->
+            <ul class="carousel-indicators">
+                <% for(var i = 0; i < article.length; i++){ %>
+                    <li data-target="#demo" data-slide-to="<%=i%>" class="{{if i == 0}}active{{/if}}">
+                    </li>
+                <% } %>
+            </ul>
+        
+            <!-- 轮播图片 -->
+            <div class="carousel-inner">
+                <% for(var i = 0; i < article.length; i++){ %>
+                    <div class="carousel-item {{if i == 0}}active{{/if}}">
+                        <img src="<%= article[i].masterGraph%>" style="width: 100%;">
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <% for(var i = 0; i < articleList.length; i++){ %>
+            <a href="/content?_id=<%= articleList[i].content%>">
+                <div class="content row no-gutters">
+                <div class="col-lg-3 col-5 content-img">
+                    <img src="<%= articleList[i].masterGraph%>" style="width: 100%; height: 100%">
+                </div>
+                <div class="col-lg-8 col-6 content-content">
+                    <div>
+                        <p><%= articleList[i].title%></p>
+                    </div>
+                    <div>
+                        <p><%= articleList[i].summary%></p>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-1 content-nav">
+                    <img src="./img/left.png" style="width: 30px; height: 30px"/>
+                </div>
+                </div>
+            </a>
+        <% } %>
+    </main>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+</body>
+</html>
