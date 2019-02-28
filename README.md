@@ -43,7 +43,7 @@ npm run server
 | 前端demo |                 | [👁️](http://rncms.tianchenyong.top/home) |
 | 项目后台 | youngon/youngon | [👀](http://vod-admin.tianchenyong.top)|
 | 项目地址 |                 | [👁](http://vod.tianchenyong.top )|
-
+| new Cms | 开箱即用，适合快速开发图片文档类型的 Cms| [👁](https://github.com/loo41/rncms/tree/col-cms) |
 
 ### 目录
 
